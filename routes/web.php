@@ -1,18 +1,9 @@
 <?php
 
+use App\Http\Controllers\MyController;
 use App\Http\Controllers\PageConroller;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,3 +37,13 @@ Route::get("/users/{user}", function ($user) {
 });
 Route::get('/pages/show/{id}/',[PageConroller::class, 'showOne']);
 Route::get('/pages/all/',[PageConroller::class, 'showAll']);
+Route::get('/show', [PostController::class, 'index']);
+
+//10.1
+Route::get('/method1', [MyController::class,'method1']);
+Route::get('/method2', [MyController::class,'method2']);
+Route::get('/method3', [MyController::class,'method3']);
+//10.2
+Route::get('/link/{title}/{content}', [MyController::class,'link']);
+//10.3
+Route::get('/user/{title}/{content} ', [MyController::class,'user']);
