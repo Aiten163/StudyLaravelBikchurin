@@ -3,7 +3,9 @@
 use App\Http\Controllers\MyController;
 use App\Http\Controllers\PageConroller;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,11 +23,11 @@ Route::get('/{year}/{month}/{day}/', function ($year, $month, $day) {
     'day' => '(0[1-9]|[1-2][0-9]|3[0-1])$'
 ]);
 Route::get("/users/{user}", function ($user) {
-    $users = [ 
-        'user1' => 'city1', 
-        'user2' => 'city2', 
-        'user3' => 'city3', 
-        'user4' => 'city4', 
+    $users = [
+        'user1' => 'city1',
+        'user2' => 'city2',
+        'user3' => 'city3',
+        'user4' => 'city4',
         'user5' => 'city5'
        ] ;
        if (array_key_exists($user,$users))
@@ -47,3 +49,7 @@ Route::get('/method3', [MyController::class,'method3']);
 Route::get('/link/{title}/{content}', [MyController::class,'link']);
 //10.3
 Route::get('/user/{title}/{content} ', [MyController::class,'user']);
+//13.1_2
+Route::get('/employee', [EmployeeController::class,'task13_1_2']);
+//13.1_3
+Route::get('/employee2', [EmployeeController::class,'task13_1_3']);
